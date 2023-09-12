@@ -3,7 +3,7 @@
 Alunos:Murilo Watanabe(https://github.com/MuriloWatanabe/), Phelipe Moser(https://github.com/PhelipiM/) e William Nunes(https://github.com/Nunes-Willi/).
 
 links:
-https://github.com/PhelipiM/Devcar-ph-
+https://github.com/Nunes-Willi/Devcar-mobile;
 https://github.com/PhelipiM/exercicio_garagem_django-1
 
 
