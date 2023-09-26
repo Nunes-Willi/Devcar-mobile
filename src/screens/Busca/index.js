@@ -52,7 +52,7 @@ export default function Busca() {
       />
     </View>
   );
-}
+}        
 
 const styles = StyleSheet.create({
   container: {
