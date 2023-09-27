@@ -1,24 +1,52 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, Text, StyleSheet,TextInput, Button, FlatList, Image, ScrollView } from 'react-native';
 
-const Card = ({ data, onPress }) => {
-    
+import api from '../../plugins/api';
+
+export default function Home() {
+  const [query, setQuery] = React.useState("");
+  const [results, setResults] = React.useState([]);
+
+  const [cars, setCars] = useState([])
+
+  const getVeiculos = async () => {
+    const {data} = await api.get('garagem/veiculos/')
+    setCars(data)
+    setResults(data)
+  }
+
+
+  useEffect(() => {
+    getVeiculos()
+  }, [])
+
+
   return (
-    <View>
-      <TouchableOpacity style={styles.card} onPress={() => Navigation.navigator()}>
-        <Image style={styles.image} source={{ uri: 'https://s1.1zoom.me/big0/572/Volkswagen_Red_Metallic_White_background_592789_1280x853.jpg'}}/>
-        <Text style={styles.title}>Volkswagen Gol</Text>
-      </TouchableOpacity>
+    
+    <View >
+      <FlatList  
+        data={results}
+        renderItem={({ item, index }) => (
+          <View style={styles.container}>
+            <Image source={{ uri: item.image }} style={styles.image} />
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>{item.name}</Text>
+
+            </View>
+          </View>
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
+    
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
+  container: {
     width: 180,
     height: 220,
     backgroundColor: 'white',
-    borderRadius: 8,
     padding: 16,
     margin: 8,
     shadowColor: '#000',
@@ -26,7 +54,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
-    
+
   },
   image: {
     width: '100%',
@@ -39,5 +67,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-export default Card;

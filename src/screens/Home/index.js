@@ -1,72 +1,28 @@
-import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet,TextInput, Button, FlatList, Image, ScrollView } from 'react-native';
-
-import api from '../../plugins/api';
-
-export default function Busca() {
-  const [query, setQuery] = React.useState("");
-  const [results, setResults] = React.useState([]);
-
-  const [cars, setCars] = useState([])
-
-  const getVeiculos = async () => {
-    const {data} = await api.get('garagem/veiculos/')
-    setCars(data)
-    setResults(data)
-  }
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import Card from "../../componentes/Card";
+import Sobre from "../../componentes/Sobre";
+import Rodape from '../../componentes/Rodapé';
 
 
-  useEffect(() => {
-    getVeiculos()
-  }, [])
-
-
+export default function Home() {
   return (
-    <View style={styles.sla}>
-      <FlatList horizontal  
-        data={results}
-        renderItem={({ item, index }) => (
-          <View style={styles.container}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <View style={styles.textContainer}>
-              <Text style={styles.title}>{item.name}</Text>
-
-            </View>
-          </View>
-        )}
-        keyExtractor={(item) => item.id}
-      />
+    <View>
+      <ScrollView>
+        <Sobre/>
+        <Card style={styles.container} />
+        <Rodape/>
+      </ScrollView>
     </View>
   );
-}    
-
+}
 
 const styles = StyleSheet.create({
   container: {
-    width: 180,
-    height: 220,
-    backgroundColor: 'white',
-    borderRadius: 8,
-    padding: 16,
-    margin: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 5,
-    
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap:"row",
   },
-  image: {
-    width: '100%',
-    height: 150,
-    borderRadius: 8,
-    marginBottom: 8,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  sla:{ 
-    flexDirection:"row", 
-  }
 });
