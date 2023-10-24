@@ -24,9 +24,9 @@ function HomeRoutes() {
         options={{
           title: "Página Inicial",
           headerStyle: {
-            backgroundColor: "#000000",
+            backgroundColor: "white",
           },
-          headerTintColor: "#fff",
+          headerTintColor: "black",
           headerTitleStyle: {
             fontWeight: "bold",
           },
