@@ -4,13 +4,52 @@ import { StyleSheet, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from './screens/Home';
 import Busca from './screens/Busca';
 import Perfil from './screens/Perfil';
+import CardDetail from './screens/CardDetail';
 
 const BottomTab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+
+function HomeRoutes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: "Página Inicial",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+      <Stack.Screen
+        name="CardDetail"
+        component={CardDetail}
+        options={{
+          title: "Detalhes do Produto",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 
 export default function Routes() {
   return (
@@ -19,11 +58,13 @@ export default function Routes() {
         screenOptions={{
           tabBarActiveTintColor: 'red',
           tabBarInactiveTintColor: 'black',
+          headerShown: false,
+          
         }}
       >
         <BottomTab.Screen
           name="Home"
-          component={Home}
+          component={HomeRoutes}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -60,3 +101,4 @@ const styles = StyleSheet.create({
     Color: '#6A5ACD',
   },
 });
+

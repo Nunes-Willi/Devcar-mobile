@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet,TextInput,Button, FlatList, Image } from 'react-native';
+import { View, Text, StyleSheet,TextInput,Button, FlatList, Image ,TouchableOpacity,navigate } from 'react-native';
 
 import api from '../../plugins/api';
 
-export default function Busca() {
+export default function Busca({ navigation }) {
   const [query, setQuery] = React.useState("");
   const [results, setResults] = React.useState([]);
 
   const [cars, setCars] = useState([])
+
+  const id = 1
 
   const getVeiculos = async () => {
     const {data} = await api.get('garagem/veiculos/')
@@ -40,6 +42,9 @@ export default function Busca() {
       <FlatList
         data={results}
         renderItem={({ item, index }) => (
+          <TouchableOpacity onPress={() =>
+            navigation.navigate("CardDetail", { CarroId: id })} >
+
           <View style={styles.result}>
             <Image source={{ uri: item.image }} style={styles.image} />
             <View style={styles.textContainer}>
@@ -47,6 +52,7 @@ export default function Busca() {
               <Text>{item.description}</Text>
             </View>
           </View>
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id}
       />
@@ -58,6 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    paddingTop: 50,
   },
   input: {
     width: "100%",

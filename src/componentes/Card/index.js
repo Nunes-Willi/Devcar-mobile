@@ -24,7 +24,7 @@ export default function Home() {
   return (
     
     <View >
-      <FlatList  
+      <FlatList  horizontal
         data={results}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
