@@ -43,7 +43,7 @@ export default function Busca({ navigation }) {
         data={results}
         renderItem={({ item, index }) => (
           <TouchableOpacity onPress={() =>
-            navigation.navigate("CardDetail", { CarroId: id })} >
+            navigation.navigate("CardDetail", { CarroId: item.id })} >
 
           <View style={styles.result}>
             <Image source={{ uri: item.image }} style={styles.image} />
