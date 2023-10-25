@@ -49,7 +49,6 @@ export default function Busca({ navigation }) {
             <Image source={{ uri: item.image }} style={styles.image} />
             <View style={styles.textContainer}>
               <Text style={styles.title}>{item.name}</Text>
-              <Text>{item.description}</Text>
             </View>
           </View>
           </TouchableOpacity>

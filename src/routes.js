@@ -38,9 +38,9 @@ function HomeRoutes() {
         options={{
           title: "Detalhes do Produto",
           headerStyle: {
-            backgroundColor: "#000000",
+            backgroundColor: "white",
           },
-          headerTintColor: "#fff",
+          headerTintColor: "black",
           headerTitleStyle: {
             fontWeight: "bold",
           },
