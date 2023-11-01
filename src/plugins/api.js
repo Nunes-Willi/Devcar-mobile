@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://191.52.55.35:19003/api/'
+  baseURL: 'https://exercicio-garagem-django-1-dev-qrxg.1.us-1.fl0.io/api/'
 })
 
 export default api
