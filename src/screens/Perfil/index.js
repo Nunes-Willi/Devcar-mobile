@@ -11,34 +11,41 @@ export default function Perfil({ navigation }) {
 
   return (
     <ScrollView contentContainerStyle={darkTheme ? [styles.container, styles.darkTheme] : styles.container}>
-      <View style={styles.card}>
-        <TouchableOpacity style={styles.header}>
-          <MaterialCommunityIcons name="account-circle" size={120} color="#333" />
-          <Text style={styles.userName}>Usuário</Text>
+      <View style={styles.navigationBar}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <MaterialCommunityIcons name="arrow-left" size={30} color="#333" />
         </TouchableOpacity>
+        <Text style={styles.navigationTitle}>Perfil</Text>
+        <TouchableOpacity style={styles.themeButton} onPress={toggleTheme}>
+          <MaterialCommunityIcons name={darkTheme ? 'weather-sunny' : 'weather-night'} size={24} color="#333" />
+        </TouchableOpacity>
+      </View>
 
-        <View style={styles.profileInfo}>
-          <View style={styles.infoSection}>
-            <Text style={styles.label}>Nome:</Text>
-            <Text style={styles.info}>Phelipi Moser</Text>
-          </View>
+      <View style={styles.scrollContent}>
+        <View style={styles.card}>
+          <TouchableOpacity style={styles.header}>
+            <MaterialCommunityIcons name="account-circle" size={120} color="#333" />
+            <Text style={styles.userName}>Usuário</Text>
+          </TouchableOpacity>
 
-          <View style={styles.infoSection}>
-            <Text style={styles.label}>E-mail:</Text>
-            <Text style={styles.info}>Phelipi@gmail.com</Text>
-          </View>
+          <View style={styles.profileInfo}>
+            <View style={styles.infoSection}>
+              <Text style={styles.label}>Nome:</Text>
+              <Text style={styles.info}>Phelipi Moser</Text>
+            </View>
 
-          <View style={styles.infoSection}>
-            <Text style={styles.label}>Telefone:</Text>
-            <Text style={styles.info}>47 9876-2654</Text>
+            <View style={styles.infoSection}>
+              <Text style={styles.label}>E-mail:</Text>
+              <Text style={styles.info}>Phelipi@gmail.com</Text>
+            </View>
+
+            <View style={styles.infoSection}>
+              <Text style={styles.label}>Telefone:</Text>
+              <Text style={styles.info}>47 9876-2654</Text>
+            </View>
           </View>
         </View>
       </View>
-
-      <TouchableOpacity style={styles.themeButton} onPress={toggleTheme}>
-        <MaterialCommunityIcons name={darkTheme ? 'weather-sunny' : 'weather-night'} size={24} color="#333" />
-        <Text style={styles.themeButtonText}>{darkTheme ? 'Modo Claro' : 'Modo Escuro'}</Text>
-      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -49,6 +56,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
     paddingTop: 40,
     paddingHorizontal: 20,
+  },
+  darkTheme: {
+    backgroundColor: '#333',
+    color: '#fff',
+  },
+  navigationBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+  },
+  navigationTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  scrollContent: {
+    flex: 1,
+    paddingTop: 10,
   },
   card: {
     backgroundColor: '#fff',
@@ -91,23 +121,6 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   themeButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 15,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    marginTop: 20,
-  },
-  themeButtonText: {
-    marginLeft: 10,
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  // Estilos para o tema escuro
-  darkTheme: {
-    backgroundColor: '#333',
-    color: '#fff',
+    padding: 10,
   },
 });
