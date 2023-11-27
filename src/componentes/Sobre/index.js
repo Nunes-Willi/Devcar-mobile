@@ -15,13 +15,6 @@ const RevendedoraPage = () => {
       <Image source={{ uri: revendedora.foto }} style={styles.foto} />
       <Text style={styles.nome}>{revendedora.nome}</Text>
       <Text style={styles.descricao}>{revendedora.descricao}</Text>
-      <Text style={styles.tituloProdutos}>Carros mais endidos:</Text>
-      {revendedora.produtos.map((produto, index) => (
-        <View key={index} style={styles.produto}>
-          <Text style={styles.nomeProduto}>{produto.nome}</Text>
-          <Text style={styles.precoProduto}>{produto.preco}</Text>
-        </View>
-      ))}
     </ScrollView>
   );
 };
@@ -47,6 +40,7 @@ const styles = StyleSheet.create({
   descricao: {
     fontSize: 16,
     marginBottom: 20,
+    textAlign:"center",
   },
   tituloProdutos: {
     fontSize: 20,

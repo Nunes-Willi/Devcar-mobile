@@ -10,7 +10,6 @@ export default function Home() {
     <View>
       <ScrollView>
         <Sobre/>
-        <Card style={styles.container} />
         <Rodape/>
       </ScrollView>
     </View>

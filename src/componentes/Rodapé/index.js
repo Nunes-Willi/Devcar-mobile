@@ -13,21 +13,21 @@ const Rodape = () => {
   
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#333',
+      backgroundColor: '#fff',
       padding: 10,
       alignItems: 'center',
     },
     text: {
-      color: '#fff',
+      color: '#000',
       fontSize: 14,
     },
     contato: {
-      color: '#fff',
+      color: '#000',
       fontSize: 12,
       marginTop: 5,
     },
     contatoInfo: {
-      color: '#fff',
+      color: '#000',
       fontSize: 12,
       marginTop: 3,
     },

@@ -1,110 +1,113 @@
 import React from 'react';
 import { ScrollView, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function Perfil({ navigation }) {
+  const [darkTheme, setDarkTheme] = React.useState(false);
+
+  const toggleTheme = () => {
+    setDarkTheme(!darkTheme);
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      <TouchableOpacity
-        style={styles.header}
-      >
-        <MaterialCommunityIcons name="account-circle" size={100} color="#333" />
-        <Text style={styles.userName}>Nome do Usuário</Text>
-      </TouchableOpacity>
+    <ScrollView contentContainerStyle={darkTheme ? [styles.container, styles.darkTheme] : styles.container}>
+      <View style={styles.card}>
+        <TouchableOpacity style={styles.header}>
+          <MaterialCommunityIcons name="account-circle" size={120} color="#333" />
+          <Text style={styles.userName}>Usuário</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => navigation.navigate('Compras')}
-      >
-        <MaterialCommunityIcons name="credit-card" size={35} color="#333" />
-        <View style={styles.info}>
-        {/* <TouchableOpacity style={styles.option} onPress={Compras}>
+        <View style={styles.profileInfo}>
+          <View style={styles.infoSection}>
+            <Text style={styles.label}>Nome:</Text>
+            <Text style={styles.info}>Phelipi Moser</Text>
+          </View>
 
-      </TouchableOpacity> */}
+          <View style={styles.infoSection}>
+            <Text style={styles.label}>E-mail:</Text>
+            <Text style={styles.info}>Phelipi@gmail.com</Text>
+          </View>
+
+          <View style={styles.infoSection}>
+            <Text style={styles.label}>Telefone:</Text>
+            <Text style={styles.info}>47 9876-2654</Text>
+          </View>
         </View>
-        <MaterialIcons name="keyboard-arrow-right" color="#999" size={20} />
-      </TouchableOpacity>
-
-      <View style={styles.menuAdicional}>
-        <TouchableOpacity style={styles.opcoesAdicionais}>
-          <View style={styles.wrapper}>
-            <MaterialCommunityIcons name="lifebuoy" size={25} color="#CDC" />
-            <Text style={styles.optionName}>Ajuda</Text>
-          </View>
-          <MaterialIcons name="keyboard-arrow-right" color="#999" size={20} />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.opcoesAdicionais}>
-          <View style={styles.wrapper}>
-            <MaterialIcons name="settings" size={25} color="#CDC" />
-            <Text style={styles.optionName}>Configurações</Text>
-          </View>
-          <MaterialIcons name="keyboard-arrow-right" color="#999" size={20} />
-        </TouchableOpacity>
       </View>
+
+      <TouchableOpacity style={styles.themeButton} onPress={toggleTheme}>
+        <MaterialCommunityIcons name={darkTheme ? 'weather-sunny' : 'weather-night'} size={24} color="#333" />
+        <Text style={styles.themeButtonText}>{darkTheme ? 'Modo Claro' : 'Modo Escuro'}</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
+    backgroundColor: '#FAFAFA',
+    paddingTop: 40,
+    paddingHorizontal: 20,
+  },
+  card: {
     backgroundColor: '#fff',
-    paddingTop: 20,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 30,
+    marginBottom: 30,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5,
   },
   header: {
     alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-    marginBottom: 20,
+    marginBottom: 30,
   },
   userName: {
-    marginTop: 10,
-    fontSize: 20,
+    marginTop: 15,
+    fontSize: 32,
+    fontWeight: 'bold',
     color: '#333',
   },
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    marginTop: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+  profileInfo: {},
+  infoSection: {
+    marginBottom: 25,
+  },
+  label: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#555',
+    marginBottom: 8,
   },
   info: {
-    marginLeft: 20,
-  },
-  title: {
-    color: '#333',
     fontSize: 18,
+    color: '#333',
   },
-  description: {
+  themeButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginTop: 20,
+  },
+  themeButtonText: {
+    marginLeft: 10,
     fontSize: 16,
-    color: '#999',
+    fontWeight: 'bold',
+    color: '#333',
   },
-  menuAdicional: {
-    marginTop: 30,
-  },
-  opcoesAdicionais: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 5,
-    marginBottom: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  wrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  optionName: {
-    marginLeft: 25,
-    color: '#ccc',
-    fontSize: 15,
+  // Estilos para o tema escuro
+  darkTheme: {
+    backgroundColor: '#333',
+    color: '#fff',
   },
 });
