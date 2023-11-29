@@ -58,7 +58,7 @@ export default function Busca({ navigation }) {
               <Image source={{ uri: item.image }} style={styles.image} />
               <View style={styles.textContainer}>
                 <Text style={styles.title}>{item.name}</Text>
-                <Text style={styles.preco}>{item.preco}</Text>
+                <Text style={styles.preco}>{item.preco}$</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -112,6 +112,6 @@ const styles = StyleSheet.create({
   },
   preco:{
     color:"green",
-    fontSize: 10,
+    fontSize: 15,
   },
 });
