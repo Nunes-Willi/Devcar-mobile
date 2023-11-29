@@ -17,7 +17,6 @@ const RevendedoraPage = () => {
           <Image source={{ uri: revendedora.foto }} style={styles.foto} />
           <Text style={styles.nome}>{revendedora.nome}</Text>
           <Text style={styles.descricao}>{revendedora.descricao}</Text>
-
         </View>
       </ScrollView>
 

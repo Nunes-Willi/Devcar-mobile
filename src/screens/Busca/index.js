@@ -11,7 +11,7 @@ export default function Busca({ navigation }) {
 
   const getVeiculos = async () => {
     try {
-      const { data } = await api.get('garagem/veiculos/');
+      const { data } = await api.get('/veiculos/');
       setCars(data);
       setResults(data);
     } catch (error) {
@@ -58,7 +58,7 @@ export default function Busca({ navigation }) {
               <Image source={{ uri: item.image }} style={styles.image} />
               <View style={styles.textContainer}>
                 <Text style={styles.title}>{item.name}</Text>
-                <Text style={styles.description}>{item.description}</Text>
+                <Text style={styles.preco}>{item.preco}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -109,5 +109,9 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 14,
     color: 'gray',
+  },
+  preco:{
+    color:"green",
+    fontSize: 10,
   },
 });

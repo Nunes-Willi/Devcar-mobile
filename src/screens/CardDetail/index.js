@@ -8,7 +8,7 @@ export default function CardDetail({ route, navigation }) {
 
   const getVeiculoById = async () => {
     try {
-      const { data } = await api.get(`garagem/veiculos/${id}`);
+      const { data } = await api.get(`/veiculos/${id}`);
       setCar(data);
     } catch (error) {
       console.error(error);
