@@ -63,7 +63,7 @@ export default function Routes() {
         }}
       >
         <BottomTab.Screen
-          name="Home"
+          name="HomeRoutes"
           component={HomeRoutes}
           options={{
             tabBarLabel: 'Home',
